@@ -4,7 +4,7 @@
 ## 動作環境　
 
 言語
-- [**Python>=3.8**](https://www.python.org/) 
+- [Python>=3.8](https://www.python.org/) 
 
 使用ソフト
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -55,7 +55,13 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 
  ## 使用方法(VScode)
  ここでは完全に1からプログラムを動作をさせるために説明を開始していきます。
- </br>
- まずはPythonを実機にインストールしていきます。
+ </br></br>
+ まずは[Python](https://www.python.org/) を実機にインストールしていきます。YOLOはPythonバージョン3.8以降で動作するのでダウンロードします。右のボタンからダウンロードします。
  ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)
+ </br></br>
+ ダウンロードが終わったらインストールします。画像のようにwindows設定→アプリ→アプリと機能 にPythonがインストールされていることを確認してください。そうしたらアプリ実行エイリアスからpythonインストーラーをオフにしてください。こうしないとライブラリのインストールpipが上手く動作しないことがあります。
+ </br></br>
+ 次に[Visual Studio Code](https://code.visualstudio.com/)をダウンロードします。最新バージョンでないと動作しないことがありますので、ダウンロード時の最新バージョンをダウンロードしてください。
+ 
+ 
  
