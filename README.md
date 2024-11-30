@@ -56,12 +56,14 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
  ## 使用方法(VScode)
  ここでは完全に1からプログラムを動作をさせるために説明を開始していきます。
  </br></br>
- まずは[Python](https://www.python.org/) を実機にインストールしていきます。YOLOはPythonバージョン3.8以降で動作するのでダウンロードします。右のボタンからダウンロードします。
- ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)
+- まずは[Python](https://www.python.org/) を実機にインストールしていきます。YOLOはPythonバージョン3.8以降で動作するのでダウンロードします。右のボタンからダウンロードします。
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)](https://pypi.org/project/ultralytics/)
  </br></br>
  ダウンロードが終わったらインストールします。画像のようにwindows設定→アプリ→アプリと機能 にPythonがインストールされていることを確認してください。そうしたらアプリ実行エイリアスからpythonインストーラーをオフにしてください。こうしないとライブラリのインストールpipが上手く動作しないことがあります。
  </br></br>
- 次に[Visual Studio Code](https://code.visualstudio.com/)をダウンロードします。最新バージョンでないと動作しないことがありますので、ダウンロード時の最新バージョンをダウンロードしてください。
- 
- 
+- 次に[Visual Studio Code](https://code.visualstudio.com/)をダウンロードします。最新バージョンでないと動作しないことがありますので、ダウンロード時の最新バージョンをダウンロードしてください。VScodeをダウンロード後は初期設定として日本語化のインストールやPython類のツール等インストールを行ってください。
+</br></br>
+- 次にデスクトップ上にgithubからダウンロードしたファイルをおいてください。テンプレートとしてそのファイルをつかっていきます。VScode上で「ファイル→フォルダを開く」がらデスクトップ上においたフォルダを選択してください。
+ </br></br>
+- では実際に
  
