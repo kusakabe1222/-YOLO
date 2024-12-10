@@ -59,9 +59,19 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 - まずは[Python](https://www.python.org/) を実機にインストールしていきます。YOLOはPythonバージョン3.8以降で動作するのでダウンロードします。しかしバージョンが高すぎると逆にYOLOのほうが起動しなくなるため、その場合はダウングレードしてください。右のボタンからダウンロードします。
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)](https://pypi.org/project/ultralytics/)
  </br></br>
- ダウンロードが終わったらインストールします。インストール時は必ず  画像のようにwindows設定→アプリ→アプリと機能 にPythonがインストールされていることを確認してください。そうしたらアプリ実行エイリアスからpythonインストーラーをオフにしてください。こうしないとライブラリのインストールpipが上手く動作しないことがあります。
+ ダウンロードが終わったらインストールします。インストール時は必ずAdd Python 3.x to PATHをクリックしてください。その後はコマンドプロンプトを開き
+``` python
+python
+```
+と入力して下さい。入力したとき、Pythonが起動せずに、次のようにMicrosoft Store の画面が表示されてしまうことがあります。その場合はもう一度pythonをインストールしなおしてください。PowerShellでスクリプトの実行を許可しておきます。
+
+スタートメニューで Windows PowerShell | Windows PowerShell を起動し、次のコマンドを実行します。
+``` python
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
+これでpythonの初期設定は終わりです。
  </br></br>
-- 次に[Visual Studio Code](https://code.visualstudio.com/)をダウンロードします。最新バージョンでないと動作しないことがありますので、ダウンロード時の最新バージョンをダウンロードしてください。VScodeをダウンロード後は初期設定として日本語化のインストールやPython類のツール等インストールを行ってください。
+- 次に[Visual Studio Code](https://code.visualstudio.com/)をダウンロードします。最新バージョンでないと動作しないことがありますので、ダウンロード時の最新バージョンをダウンロードしてください。VScodeをダウンロード後は初期設定として日本語化のインストールやPython類のツール等インストールを行ってください。ラズベリーパイにVScodeを入れる場合、ネットではなくコマンドで入れるので、ネットを参考にして下さい。
 </br></br>
 - 次にデスクトップ上にgithubからダウンロードしたファイルをおいてください。テンプレートとしてそのファイルをつかっていきます。VScode上で「ファイル→フォルダを開く」がらデスクトップ上においたフォルダを選択してください。では実際に画像処理を始めましょう。
 
@@ -76,7 +86,7 @@ python -m venv env
 ``` python
 env\Scripts\Activate.ps1
 ```
-</br></br>
+</br>
 - ライブラリのインストール
 </br></br>
-
+次にライブラリをインストールします。
