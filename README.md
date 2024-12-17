@@ -89,4 +89,7 @@ env\Scripts\Activate.ps1
 </br>
 - ライブラリのインストール
 </br></br>
-次にライブラリをインストールします。
+次にライブラリをインストールします。</br>
+``` python
+pip install ultralytics
+```
