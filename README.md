@@ -113,4 +113,5 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 コードを実行するとこのような結果が得られます。
 ![bus-4-768x1024](https://github.com/user-attachments/assets/6c32dd52-4e03-41f3-929f-515255a8a637)</br>
 無事検出されていることがわかったらYOLOの準備完了です。ここでエラーを吐いた場合は頑張ってください。後は配布したプログラムは動くはずです。
-
+## ラズベリーパイで実行する
+ではラズベリーパイで
