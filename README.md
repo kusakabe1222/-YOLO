@@ -28,7 +28,7 @@
 
 その名の通り、画像を一度だけ見て物体を検出する特性があります。
 
-YOLOの特徴は一定水準の精度を保ちつつも高速・軽量に動作することです。YOLOにはv5から11まで存在しますがラズベリーパイの処理速度を鑑みて1番軽いv5を種にして使用しています。一応v5の他にv8、11のウェイトは用意しています。
+YOLOの特徴は一定水準の精度を保ちつつも高速・軽量に動作することです。YOLOにはv5から11まで存在しますがラズベリーパイの処理速度を鑑みて1番軽いv5を主にして使用しています。一応v5の他にv8、11のウェイトは用意しています。
 ウェイトは機械学習した結果のモデルで、プログラム上では(例)yolov5.ptのようにあります。YOLOv8にはCOCOやImageNetなどの代表的なサンプルデータを用い、既に学習済みのモデルが公開されています。これを利用することですぐに物体検出を実施できます。
 
 実際のプログラムはこのようなプログラムが使用されます。
@@ -59,7 +59,8 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 - まずは[Python](https://www.python.org/) を実機にインストールしていきます。YOLOはPythonバージョン3.8以降で動作するのでダウンロードします。しかしバージョンが高すぎると逆にYOLOのほうが起動しなくなるため、その場合はダウングレードしてください。右のボタンからダウンロードします。
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)](https://pypi.org/project/ultralytics/)
  </br></br>
- ダウンロードが終わったらインストールします。インストール時は必ずAdd Python 3.x to PATHをクリックしてください。その後はコマンドプロンプトを開き
+ ダウンロードが終わったらインストールします。インストール時は必ずAdd Python 3.x to PATHをクリックしてください。<img width="1115" alt="installer-win" src="https://github.com/user-attachments/assets/20159ee1-0829-4faa-a540-2fb44c5ad413" />その後はコマンドプロンプトを開き
+
 ``` python
 python
 ```
@@ -114,4 +115,33 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 ![bus-4-768x1024](https://github.com/user-attachments/assets/6c32dd52-4e03-41f3-929f-515255a8a637)</br>
 無事検出されていることがわかったらYOLOの準備完了です。ここでエラーを吐いた場合は頑張ってください。後は配布したプログラムは動くはずです。
 ## ラズベリーパイで実行する
-ではラズベリーパイで
+ではラズベリーパイでプログラムを実行する方法について説明していきます。
+- VScodeの導入
+  まずはラズベリーパイにVScodeを導入していきます。コマンドを開き以下のコードを入力します。
+  ```
+  sudo apt install code
+  ```
+  ![2022-01-06-222259_1920x1080_scrot_01-1](https://github.com/user-attachments/assets/65d1f5f5-08b3-47d5-930b-870c5e55baa9)
+![2022-02-07-181514_1920x1080_scrot_00](https://github.com/user-attachments/assets/671389a9-133d-45f8-a9d2-4a48b9af3ce3)
+</br>
+コマンドラインで処理が終了したら[スタートメニュー]から、[プログラミング] – [Visual Studio Code]を選択します。
+
+![Screenshot-from-2022-02-07-18-17-33_00](https://github.com/user-attachments/assets/c0fd578a-8efc-4807-9608-b6fa98cd6b47)
+起動後は日本語表示にするなどしてください。
+
+- 仮想環境の構築
+  ラズベリーパイだと仮想環境の構築のプログラミングがwindowsと異なるため、こちらのプログラムを入力していきます。
+  まずは
+  ```
+  	python3.12 -m venv env
+  ```
+  と打ちます。envフォルダが作成されます。pythonの後の数字はpythonバージョンで、ターミナル[python]と打つと確認できます。次には
+  ```
+  source env/bin/activate
+  ```
+  と打ちます。これで仮想環境をアクティベートできました。ライブラリをインストールし、上記のプログラムを入力して試してみてください。
+  -GPIOピン
+  ステッピングモータ等を動かすためにラズベリーパイのピンを使用します。ピンに関しては正直よくわかっていないため、chat gpt等にテンプレートのプログラムを出力させ、その内容によってピンを使用したほうがいいです。
+![raspberrypi-gpio-04-1](https://github.com/user-attachments/assets/0f5adfe8-053b-4f84-9b9f-c629702c2b16)
+今回使用したステッピングモータ、ドライバボードは28BYJ-48 ステッピングモーターを ULN2003 ドライバボードです。
+
