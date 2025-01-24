@@ -160,6 +160,6 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 ![スクリーンショット 2025-01-23 222507](https://github.com/user-attachments/assets/d30c9ec8-644e-46f5-9ce3-230ffd7716c5)</br>
 zipフォルダを展開するとこのようになっています。READMEの2つはいらないので消してください。
 
-#ウェイトの作成(Visual Studio Code)
+# ウェイトの作成(Visual Studio Code)
 VScodeでウェイトの作成を行っていきます。AIの学習にはGPUやNPUが必須になります。普通VScodeはCPUで動作するので機械学習がとても遅く、あまりこの方法はお勧めしません。一つの手段として目を通してください。
 
