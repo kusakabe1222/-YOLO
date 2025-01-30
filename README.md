@@ -156,10 +156,39 @@ results = model.predict(source, save=True, imgsz=320, conf=0.5)
 画像はペットボトルと缶のラベリング作業です。このように物体を囲んで、タグをつけています。単調作業ですがのちの制度に影響してくるので丁寧にラベリングしてください。その後は案内に従い、トレインを開始してください。トレインが終わったら画像を挿入して物体検出ができているか確認できます。</br>
 それではデータを用いてウェイトを作成していきます。Roboflowからウェイトをダウングレードする方法がわからなかったのでプログラムでウェイトを作成していきます。
 ![スクリーンショット 2025-01-23 222420](https://github.com/user-attachments/assets/4d246c43-9a83-4b21-84ce-84456d1d2ba1)</br>
-画像のように学習するモデルを選択し(今回の場合YOLO11)zipファイルをダウンロードします。Roboflowのいいところはここからzipをダウンロードすれば勝手にフォルダのディレクトリの配置をしてくれるのでプログラム時に便利です。
+画像のように学習するモデルを選択し(今回の場合YOLO11)zipファイルをダウンロードします。Roboflowの良いところはここからzipをダウンロードすれば勝手にフォルダのディレクトリの配置をしてくれるのでプログラム時に便利です。
 ![スクリーンショット 2025-01-23 222507](https://github.com/user-attachments/assets/d30c9ec8-644e-46f5-9ce3-230ffd7716c5)</br>
 zipフォルダを展開するとこのようになっています。READMEの2つはいらないので消してください。
 
 # ウェイトの作成(Visual Studio Code)
 VScodeでウェイトの作成を行っていきます。AIの学習にはGPUやNPUが必須になります。普通VScodeはCPUで動作するので機械学習がとても遅く、あまりこの方法はお勧めしません。一つの手段として目を通してください。
+手順は公式のサイトを参考にします。[Ultralytics-Train](https://docs.ultralytics.com/modes/train/#usage-examples)</br>
+先ほどの展開したフォルダをVScodeで開きます。次に使用方法でも記述したように仮想環境の構築からUltralyticsのインストールまで行ってください。YAMLファイルの変更をします。</br>
+
+``` python
+path: C:/Users/kusakabe/Desktop/test weights
+train: C:/Users/kusakabe/Desktop/test weights/train
+val: C:/Users/kusakabe/Desktop/test weights/valid
+test: C:/Users/kusakabe/Desktop/test weights/test
+
+names:
+  0: can
+  1: pet
+```
+すでにRoboflowによる文章がありますが置き換えて書いてください。それぞれパスの位置を個人で設定してください。namesも設定したいラベルに変更してください。ここで注意なのですがwindowsでパスをコピーするとスラッシュが\になっています。￥がバックスラッシュになるのが原因です。エラーが発生するのでスラッシュに書き換えてください。</br>
+![スクリーンショット 2025-01-30 221915](https://github.com/user-attachments/assets/bb2289f8-72fc-4d65-9e16-11dd30e3cfda)</br>
+次にプログラムを実行します。
+``` python
+from ultralytics import YOLO
+
+# Load a model
+model = YOLO("yolo11n.pt") 
+
+results = model.train(data="data.yaml", epochs=100, imgsz=640)
+```
+- modelは使用するモデルを選択します。今回は最新のyolo11nを使用します。
+- resultでは「YAMLファイルの選択」、「epochs(機械学習の回数)」、「画像サイズの選択」を設定しています。特に数値はいじらなくてもいいと思います。学習の回数は多ければいいというわけでもなく多すぎると過学習になってしまうので加減を見て設定してください。私は多くて300に設定しました。</br>
+プログラムとYAMLファイルでエラー問題がなければこのような表示が出ます。</br>
+![スクリーンショット 2025-01-30 222957](https://github.com/user-attachments/assets/4b835581-2821-4174-bfa6-ba5b21c4734a)</br>
+なんの設定などもせずに行うとCPUで学習が始まります。ですがこれだとあまりにも遅いのでGPUが使えるGoogle Colabのやり方について説明します。
 
